@@ -67,4 +67,24 @@ public class JKFlipFlop implements FlipFlop {
         System.out.println("Previous Output: Q=" + prevQ);
         System.out.println("Current Output : Q=" + currQ);
     }
+
+    @Override
+    public String getPresentState() {
+        return "Q=" + prevQ;
+    }
+
+    @Override
+    public String getInputs() {
+        return "J=" + currJ + ", K=" + currK;
+    }
+
+    @Override
+    public String getNextState() {
+        return "Q=" + currQ;
+    }
+
+    @Override
+    public String getFlipFlopInputs() {
+        return "J=" + currJ + ", K=" + currK;
+    }
 }
