@@ -4,7 +4,7 @@ public class RSFlipFlop implements FlipFlop {
     private int prevR = 0, prevS = 0;
     private int currR = 0, currS = 0;
     private int prevQ = 0, currQ = 0;
-    private int prevQnot = 1, currQnot = 1;
+    private int prevQprime = 1, currQprime = 1;
     private Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -36,20 +36,20 @@ public class RSFlipFlop implements FlipFlop {
         prevR = currR;
         prevS = currS;
         prevQ = currQ;
-        prevQnot = currQnot;
+        prevQprime = currQprime;
         if (currR == 0 && currS == 0) {
             currQ = prevQ;
-            currQnot = prevQnot;
-        } else if (currR == 0 && currS == 1) {
-            currQ = 1;
-            currQnot = 0;
+            currQprime = prevQprime;
         } else if (currR == 1 && currS == 0) {
             currQ = 0;
-            currQnot = 1;
-        } else {
-            System.out.println("Invalid input (R=1 and S=1). Output is undefined.");
+            currQprime = 1;
+        } else if (currR == 0 && currS == 1) {
+            currQ = 1;
+            currQprime = 0;
+        } else if (currR == 1 && currS == 1) {
+            System.out.println("When R and S are both 1, the output is undefined.");
             currQ = 0;
-            currQnot = 0;
+            currQprime = 1;
         }
     }
 
@@ -58,13 +58,13 @@ public class RSFlipFlop implements FlipFlop {
         System.out.println("RS Flip-Flop");
         System.out.println("Previous Inputs: R=" + prevR + ", S=" + prevS);
         System.out.println("Current Inputs : R=" + currR + ", S=" + currS);
-        System.out.println("Previous Outputs: Q=" + prevQ + ", Q'=" + prevQnot);
-        System.out.println("Current Outputs : Q=" + currQ + ", Q'=" + currQnot);
+        System.out.println("Previous Outputs: Q=" + prevQ + ", Q'=" + prevQprime);
+        System.out.println("Current Outputs : Q=" + currQ + ", Q'=" + currQprime);
     }
 
     @Override
     public String getPresentState() {
-        return "Q=" + prevQ + ", Q'=" + prevQnot;
+        return "Q=" + prevQ + ", Q'=" + prevQprime;
     }
 
     @Override
@@ -74,7 +74,10 @@ public class RSFlipFlop implements FlipFlop {
 
     @Override
     public String getNextState() {
-        return "Q=" + currQ + ", Q'=" + currQnot;
+        if (currR == 1 && currS == 1) {
+            return "?";
+        }
+        return "Q=" + currQ + ", Q'=" + currQprime;
     }
 
     @Override

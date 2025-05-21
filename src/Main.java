@@ -6,6 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         boolean running = true;
+        OpenTable.openImage();
         while (running) {
             System.out.println("Available Flip-Flop Types:");
             System.out.println("1. RS Flip-Flop");

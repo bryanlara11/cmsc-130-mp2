@@ -1,17 +1,17 @@
 public interface FlipFlop {
-    void input(); // gets input from user
+    void input();
 
-    void update(); // updates the state
+    void update();
 
-    void displayState(); // shows the state
+    void displayState();
 
-    String getPresentState(); // returns current state
+    String getPresentState();
 
-    String getInputs(); // returns current inputs
+    String getInputs();
 
-    String getNextState(); // returns next state
+    String getNextState();
 
-    String getFlipFlopInputs(); // returns flip-flop specific inputs
+    String getFlipFlopInputs();
 
-    void resetInputs(); // resets the input signals
+    void resetInputs();
 }
