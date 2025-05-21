@@ -13,7 +13,7 @@ public class JKFlipFlop implements FlipFlop {
     @Override
     public void input() {
         System.out.println("Enter J input (0 or 1): ");
-        String jInput = scanner.nextLine().trim();
+        String jInput = scanner.nextLine();
         if (jInput.equals("0")) {
             currJ = 0;
         } else if (jInput.equals("1")) {
@@ -24,7 +24,7 @@ public class JKFlipFlop implements FlipFlop {
         }
 
         System.out.println("Enter K input (0 or 1): ");
-        String kInput = scanner.nextLine().trim();
+        String kInput = scanner.nextLine();
         if (kInput.equals("0")) {
             currK = 0;
         } else if (kInput.equals("1")) {
@@ -43,14 +43,11 @@ public class JKFlipFlop implements FlipFlop {
 
         if (currJ == 0 && currK == 0) {
             currQ = prevQ;
-        }
-        else if (currJ == 0 && currK == 1) {
+        } else if (currJ == 0 && currK == 1) {
             currQ = 0;
-        }
-        else if (currJ == 1 && currK == 0) {
+        } else if (currJ == 1 && currK == 0) {
             currQ = 1;
-        }
-        else if (currJ == 1 && currK == 1) {
+        } else if (currJ == 1 && currK == 1) {
             if (prevQ == 0) {
                 currQ = 1;
             } else {
@@ -66,5 +63,33 @@ public class JKFlipFlop implements FlipFlop {
         System.out.println("Current Inputs : J=" + currJ + ", K=" + currK);
         System.out.println("Previous Output: Q=" + prevQ);
         System.out.println("Current Output : Q=" + currQ);
+    }
+
+    @Override
+    public String getPresentState() {
+        return "Q=" + prevQ;
+    }
+
+    @Override
+    public String getInputs() {
+        return "J=" + currJ + ", K=" + currK;
+    }
+
+    @Override
+    public String getNextState() {
+        return "Q=" + currQ;
+    }
+
+    @Override
+    public String getFlipFlopInputs() {
+        return "J=" + currJ + ", K=" + currK;
+    }
+
+    @Override
+    public void resetInputs() {
+        currJ = 0;
+        currK = 0;
+        System.out.println("Input signals resetting to 0");
+        System.out.println("Successfully reset inputs");
     }
 }

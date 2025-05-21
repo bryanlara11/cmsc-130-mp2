@@ -10,7 +10,7 @@ public class RSFlipFlop implements FlipFlop {
     @Override
     public void input() {
         System.out.println("Enter R input (0 or 1): ");
-        String rInput = scanner.nextLine().trim();
+        String rInput = scanner.nextLine();
         if (rInput.equals("0"))
             currR = 0;
         else if (rInput.equals("1"))
@@ -20,7 +20,7 @@ public class RSFlipFlop implements FlipFlop {
             currR = 0;
         }
         System.out.println("Enter S input (0 or 1): ");
-        String sInput = scanner.nextLine().trim();
+        String sInput = scanner.nextLine();
         if (sInput.equals("0"))
             currS = 0;
         else if (sInput.equals("1"))
@@ -80,5 +80,13 @@ public class RSFlipFlop implements FlipFlop {
     @Override
     public String getFlipFlopInputs() {
         return "R=" + currR + ", S=" + currS;
+    }
+
+    @Override
+    public void resetInputs() {
+        currR = 0;
+        currS = 0;
+        System.out.println("Input signals resetting to 0");
+        System.out.println("Successfully reset inputs");
     }
 }

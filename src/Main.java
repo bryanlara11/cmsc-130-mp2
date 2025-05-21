@@ -24,7 +24,7 @@ public class Main {
                     runFlipFlop(new TFlipFlop());
                     break;
                 case 5:
-                    System.out.println("\nThank you for using Flip-Flop Simulator!");
+                    System.out.println("\nFlip-Flop ka nang Flip-Flop, wala kang pambili ng laptop");
                     running = false;
                     break;
                 default:
@@ -46,8 +46,17 @@ public class Main {
     private static int getMenuChoice() {
         int choice = -1;
         try {
-            String line = scanner.nextLine().trim();
-            choice = Integer.parseInt(line);
+            String line = scanner.nextLine();
+            if (line.equals("1"))
+                choice = 1;
+            else if (line.equals("2"))
+                choice = 2;
+            else if (line.equals("3"))
+                choice = 3;
+            else if (line.equals("4"))
+                choice = 4;
+            else if (line.equals("5"))
+                choice = 5;
         } catch (Exception e) {
             // invalid input, return -1 to retry
         }
@@ -79,10 +88,17 @@ public class Main {
                 System.out.println(row);
             }
 
+            // Ask if user wants to continue
             System.out.print("\nContinue with current flip-flop? (y/n): ");
-            String cont = scanner.nextLine().trim().toLowerCase();
-            if (!cont.equals("y"))
+            String cont = scanner.nextLine();
+            if (cont.equals("y")) {
+                // If RS or JK, reset inputs and print message
+                if (flipFlop instanceof RSFlipFlop || flipFlop instanceof JKFlipFlop) {
+                    flipFlop.resetInputs();
+                }
+            } else {
                 running = false;
+            }
         }
     }
 }

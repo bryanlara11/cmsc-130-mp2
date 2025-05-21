@@ -12,4 +12,6 @@ public interface FlipFlop {
     String getNextState(); // returns next state
 
     String getFlipFlopInputs(); // returns flip-flop specific inputs
+
+    void resetInputs(); // resets the input signals
 }
