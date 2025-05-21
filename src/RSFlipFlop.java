@@ -86,7 +86,10 @@ public class RSFlipFlop implements FlipFlop {
     public void resetInputs() {
         currR = 0;
         currS = 0;
-        System.out.println("Input signals resetting to 0");
+        System.out.println("Input signals resetting to 0 in...");
+        for (int i = 3; i >= 0; i--) {
+            System.out.println(i);
+        }
         System.out.println("Successfully reset inputs");
     }
 }

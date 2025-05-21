@@ -7,7 +7,13 @@ public class Main {
     public static void main(String[] args) {
         boolean running = true;
         while (running) {
-            displayMenu();
+            System.out.println("Available Flip-Flop Types:");
+            System.out.println("1. RS Flip-Flop");
+            System.out.println("2. D Flip-Flop");
+            System.out.println("3. JK Flip-Flop");
+            System.out.println("4. T Flip-Flop");
+            System.out.println("5. Exit");
+            System.out.print("\nSelect flip-flop type (1-5): ");
             int choice = getMenuChoice();
 
             switch (choice) {
@@ -31,16 +37,6 @@ public class Main {
                     System.out.println("\nInvalid selection. Please try again.");
             }
         }
-    }
-
-    private static void displayMenu() {
-        System.out.println("Available Flip-Flop Types:");
-        System.out.println("1. RS Flip-Flop");
-        System.out.println("2. D Flip-Flop");
-        System.out.println("3. JK Flip-Flop");
-        System.out.println("4. T Flip-Flop");
-        System.out.println("5. Exit");
-        System.out.print("\nSelect flip-flop type (1-5): ");
     }
 
     private static int getMenuChoice() {

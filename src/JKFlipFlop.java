@@ -87,9 +87,12 @@ public class JKFlipFlop implements FlipFlop {
 
     @Override
     public void resetInputs() {
-        currJ = 0;
-        currK = 0;
-        System.out.println("Input signals resetting to 0");
+        currR = 0;
+        currS = 0;
+        System.out.println("Input signals resetting to 0 in...");
+        for (int i = 3; i >= 0; i--) {
+            System.out.println(i);
+        }
         System.out.println("Successfully reset inputs");
     }
 }
